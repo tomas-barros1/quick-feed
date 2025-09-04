@@ -1,0 +1,12 @@
+<h2>New Comment for <%= @post.title %></h2>
+
+<%= form_with(model: [@post, @comment]) do |form| %>
+  <div>
+    <%= form.label :content %><br>
+    <%= form.rich_textarea :content %>
+  </div>
+
+  <div>
+    <%= form.submit "Save comment" %>
+  </div>
+<% end %>

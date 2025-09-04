@@ -1,0 +1,21 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @post %>
+
+<div>
+  <strong>Comments:</strong>
+  <% @post.comments.each do |p| %>
+    <div class="notice">
+      <%= p.content %>
+    </div>
+  <% end %>
+</div>
+
+
+<div>
+  <%= link_to "Edit this post", edit_post_path(@post) %> |
+  <%= link_to "Back to posts", posts_path %> |
+  <%= link_to "Create comment", new_post_comment_path(@post) %>
+
+  <%= button_to "Destroy this post", @post, method: :delete %>
+</div>
