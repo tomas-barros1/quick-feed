@@ -1,0 +1,17 @@
+<header class="site-navbar">
+  <nav>
+    <div class="brand">
+      <a href="<%= root_path %>">MyBlog</a>
+    </div>
+    <div class="nav-links">
+      <%= link_to 'Posts', posts_path %>
+      <% if user_signed_in? %>
+        <%= link_to 'New Post', new_post_path %>
+        <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to 'Sign in', new_user_session_path %>
+        <%= link_to 'Sign up', new_user_registration_path %>
+      <% end %>
+    </div>
+  </nav>
+</header>

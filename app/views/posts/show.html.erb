@@ -6,7 +6,8 @@
   <strong>Comments:</strong>
   <% @post.comments.each do |p| %>
     <div class="notice">
-      <%= p.content %>
+    <strong><%= p.user ? p.user.email : 'Anon' %></strong>
+  <%= p.content %>
     </div>
   <% end %>
 </div>
@@ -16,6 +17,6 @@
   <%= link_to "Edit this post", edit_post_path(@post) %> |
   <%= link_to "Back to posts", posts_path %> |
   <%= link_to "Create comment", new_post_comment_path(@post) %>
-
+  <br><br>
   <%= button_to "Destroy this post", @post, method: :delete %>
 </div>

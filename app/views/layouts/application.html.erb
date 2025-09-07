@@ -24,6 +24,11 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'shared/navbar' %>
+    <main class="container">
+      <%= yield %>
+    </main>
+    <%= render 'shared/footer' %>
+    <%= stylesheet_link_tag "navbar_footer", "data-turbo-track": "reload" %>
   </body>
 </html>

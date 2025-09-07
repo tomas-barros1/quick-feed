@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
   def new
     @post = Post.find(params[:post_id])
     @comment = @post.comments.build
@@ -6,12 +7,19 @@ class CommentsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @comment = @post.comments.build(params.expect(comment: [:content]))
+    @comment = @post.comments.build(comment_params)
+    @comment.user = current_user
 
     if @comment.save
-      redirect_to @post, notice: "Comment created!"
+      redirect_to(@post, notice: "Comment created!")
     else
-      render :new, status: :unprocessable_entity
+      render(:new, status: :unprocessable_entity)
     end
+  end
+
+  private
+
+  def comment_params
+    params.require(:comment).permit(:content)
   end
 end

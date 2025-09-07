@@ -1,0 +1,35 @@
+/* Styles that complement Simple CSS for navbar and footer */
+
+.site-navbar {
+  background: rgba(0, 0, 0, 0.04);
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.site-navbar nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.site-navbar .brand a {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-navbar .nav-links a {
+  margin-left: 0.75rem;
+}
+
+.site-footer {
+  margin-top: 3rem;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.03);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  text-align: center;
+}
+
+.site-footer p {
+  margin: 0.25rem 0;
+}
