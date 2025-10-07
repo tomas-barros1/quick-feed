@@ -3,7 +3,7 @@ name: CI
 on:
   pull_request:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   scan_ruby:
@@ -79,7 +79,19 @@ jobs:
         env:
           RAILS_ENV: test
           # REDIS_URL: redis://localhost:6379/0
-        run: bin/rails db:test:prepare test test:system
+        run: |
+          # Prepare the test database
+          bin/rails db:test:prepare
+
+          # Run unit and integration tests
+          bin/rails test
+
+          # Run system tests only if the directory exists (prevents LoadError when none exist)
+          if [ -d test/system ]; then
+            bin/rails test:system
+          else
+            echo "No system tests found, skipping test:system"
+          fi
 
       - name: Keep screenshots from failed system tests
         uses: actions/upload-artifact@v4
